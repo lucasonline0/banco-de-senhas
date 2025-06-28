@@ -2,6 +2,8 @@ import customtkinter as ctk
 import pyperclip
 import json
 from cryptography.fernet import InvalidToken
+import secrets
+import string
 
 from src.storage import data_manager
 from src.security import crypto_utils
@@ -117,8 +119,18 @@ class PasswordManagerApp:
         ctk.CTkLabel(left_frame, text="Adicionar Nova Senha", font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10, padx=10)
         self.site_entry = ctk.CTkEntry(left_frame, placeholder_text="Site/Serviço"); self.site_entry.pack(pady=5, padx=10, fill="x")
         self.username_entry = ctk.CTkEntry(left_frame, placeholder_text="Usuário/Email"); self.username_entry.pack(pady=5, padx=10, fill="x")
-        self.password_entry = ctk.CTkEntry(left_frame, placeholder_text="Senha"); self.password_entry.pack(pady=5, padx=10, fill="x")
+
+        password_frame = ctk.CTkFrame(left_frame, fg_color="transparent")
+        password_frame.pack(pady=5, padx=10, fill="x")
+        password_frame.grid_columnconfigure(0, weight=1)
+
+        self.password_entry = ctk.CTkEntry(password_frame, placeholder_text="Senha")
+        self.password_entry.grid(row=0, column=0, sticky="ew", padx=(0, 5))
+        
+        ctk.CTkButton(password_frame, text="Gerar", width=80, command=self.generate_password).grid(row=0, column=1, sticky="e")
+
         ctk.CTkButton(left_frame, text="Adicionar", command=self.add_password).pack(pady=20, padx=10)
+
         right_frame = ctk.CTkFrame(main_frame); right_frame.grid(row=1, column=1, sticky="nsew"); right_frame.grid_rowconfigure(1, weight=1); right_frame.grid_columnconfigure(0, weight=1)
         ctk.CTkLabel(right_frame, text="Senhas Salvas", font=ctk.CTkFont(size=16, weight="bold")).grid(row=0, column=0, pady=10, padx=10, sticky="w")
         self.scrollable_frame = ctk.CTkScrollableFrame(right_frame, label_text=""); self.scrollable_frame.grid(row=1, column=0, sticky="nsew", padx=5, pady=(0,5))
@@ -207,6 +219,22 @@ class PasswordManagerApp:
                 self.status_label.configure(text="Senha incorreta!")
         else:
              self.status_label.configure(text="Senha incorreta!")
+
+    def generate_password(self, length=16):
+        """Generates a secure random password and inserts it into the password entry."""
+        alphabet = string.ascii_letters + string.digits + string.punctuation
+        
+        while True:
+            password = ''.join(secrets.choice(alphabet) for _ in range(length))
+            if (any(c.islower() for c in password)
+                    and any(c.isupper() for c in password)
+                    and any(c.isdigit() for c in password)
+                    and any(c in string.punctuation for c in password)):
+                break
+
+        self.password_entry.delete(0, 'end')
+        self.password_entry.insert(0, password)
+        self.show_feedback("Nova senha gerada!", color="white")
 
 
     def add_password(self):
