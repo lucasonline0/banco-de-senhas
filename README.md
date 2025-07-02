@@ -1,76 +1,73 @@
-# Cofre de Senhas Desktop
+# Desktop Password Vault
 
 <p align="center">
   <img src="https://img.shields.io/github/stars/lucasonline0/banco-de-senhas?style=social" alt="GitHub Stars"/>
   <img src="https://img.shields.io/github/forks/lucasonline0/banco-de-senhas?style=social" alt="GitHub Forks"/>
-  <img src="https://img.shields.io/github/license/lucasonline0/banco-de-senhas" alt="Licença"/>
-  <img src="https://img.shields.io/github/last-commit/lucasonline0/banco-de-senhas" alt="Último Commit"/>
+  <img src="https://img.shields.io/github/license/lucasonline0/banco-de-senhas" alt="License"/>
+  <img src="https://img.shields.io/github/last-commit/lucasonline0/banco-de-senhas" alt="Last Commit"/>
 </p>
 
-> Um gerenciador de senhas de desktop seguro, com suporte a múltiplos usuários, construído com Python e CustomTkinter. Todos os dados são criptografados e armazenados localmente no seu computador.
+> A secure desktop password manager with multi-user support, built with Python and CustomTkinter. All data is encrypted and stored locally on your computer.
 
+## 🎯 About
 
+The **Desktop Password Vault** is an open-source application created to offer a secure and offline solution for password management. The main motivation is to give the user full control over their data, without depending on third-party cloud services.
 
-## 🎯 Sobre
-
-O **Cofre de Senhas Desktop** é uma aplicação de código aberto criada para oferecer uma solução segura e offline para o gerenciamento de senhas. A principal motivação é dar ao usuário controle total sobre seus dados, sem depender de serviços em nuvem de terceiros.
-
-O projeto utiliza **Python** como base, com uma interface gráfica desenvolvida com a biblioteca **CustomTkinter**. A segurança é o pilar central, implementada com a biblioteca **Cryptography**, que garante que todas as informações sejam armazenadas de forma segura através de derivação de chave (PBKDF2HMAC) e criptografia simétrica (Fernet).
+The project uses **Python** as its foundation, with a graphical user interface developed using the **CustomTkinter** library. Security is the central pillar, implemented with the **Cryptography** library, which ensures that all information is stored securely through key derivation (PBKDF2HMAC) and symmetric encryption (Fernet).
 
 ---
 
 ## 🖼️ Screenshots
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fda38f51-2e99-42db-b205-da934dcb569f" alt="Tela de Login" width="400"/>
-  <img src="https://github.com/user-attachments/assets/1fbbc2be-b1c2-4ea3-9e50-efefd4ab9cbf" alt="Tela Principal" width="400"/>
+  <img src="https://github.com/user-attachments/assets/fda38f51-2e99-42db-b205-da934dcb569f" alt="Login Screen" width="400"/>
+  <img src="https://github.com/user-attachments/assets/1fbbc2be-b1c2-4ea3-9e50-efefd4ab9cbf" alt="Main Screen" width="400"/>
 </p>
 <p align="center">
-  <em>Tela de Login e Tela Principal do Cofre</em>
+  <em>Login Screen and Main Vault Screen</em>
 </p>
-
 
 ---
 
 ## ✨ Features
 
--   ✅ **Criptografia Forte:** Utiliza salt individual por usuário, PBKDF2HMAC para derivar uma chave segura da senha mestre e Fernet (AES 128 bits em modo CBC) para criptografar os dados.
--   ✅ **Suporte a Múltiplos Usuários:** Permite que diferentes usuários criem seus próprios perfis protegidos por senha na mesma aplicação, com cofres de senhas totalmente separados.
--   ✅ **Armazenamento 100% Local:** Todos os perfis e dados criptografados são salvos diretamente na sua máquina. Nenhuma informação é enviada para a internet.
--   ✅ **Interface Gráfica Moderna:** Interface amigável e intuitiva construída com a biblioteca CustomTkinter.
--   ✅ **Gerenciamento Simples:** Adicione novas credenciais (site, usuário e senha), liste todas as senhas salvas e copie-as para a área de transferência com um único clique.
+-   ✅ **Strong Encryption:** Uses a unique salt per user, PBKDF2HMAC to derive a secure key from the master password, and Fernet (128-bit AES in CBC mode) to encrypt the data.
+-   ✅ **Multi-User Support:** Allows different users to create their own password-protected profiles in the same application, with completely separate password vaults.
+-   ✅ **100% Local Storage:** All profiles and encrypted data are saved directly on your machine. No information is sent over the internet.
+-   ✅ **Modern GUI:** A user-friendly and intuitive interface built with the CustomTkinter library.
+-   ✅ **Simple Management:** Add new credentials (website, username, and password), list all saved passwords, and copy them to the clipboard with a single click.
 
 ---
 
-## 📋 Pré-requisitos
+## 📋 Prerequisites
 
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+Before you begin, you will need to have the following tools installed on your machine:
 
 -   [Git](https://git-scm.com)
 -   [Python 3.8+](https://www.python.org/downloads/)
--   É recomendado ter um editor de código como o [VSCode](https://code.visualstudio.com/) para trabalhar no projeto.
+-   Having a code editor like [VSCode](https://code.visualstudio.com/) is recommended for working on the project.
 
 ---
 
-## 🚀 Instalação
+## 🚀 Installation
 
-Siga os passos abaixo para configurar o ambiente de desenvolvimento:
+Follow the steps below to set up the development environment:
 
 ```bash
-# 1. Clone este repositório
+# 1. Clone this repository
 $ git clone [https://github.com/lucasonline0/banco-de-senhas.git](https://github.com/lucasonline0/banco-de-senhas.git)
 
-# 2. Acesse a pasta do projeto no terminal/cmd
+# 2. Navigate to the project folder in your terminal/cmd
 $ cd banco-de-senhas
 
-# 3. (Recomendado) Crie e ative um ambiente virtual
-# Em Windows
+# 3. (Recommended) Create and activate a virtual environment
+# On Windows
 $python -m venv venv$ .\venv\Scripts\activate
-# Em macOS/Linux
+# On macOS/Linux
 $python3 -m venv venv$ source venv/bin/activate
 
-# 4. Instale as dependências listadas no requirements.txt
+# 4. Install the dependencies listed in requirements.txt
 $ pip install -r requirements.txt
 
-# 5. Execute a aplicação
+# 5. Run the application
 $ python main.py
